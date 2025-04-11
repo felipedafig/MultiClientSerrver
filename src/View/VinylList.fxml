@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="420.0" prefWidth="681.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.ViewController">
+   <children>
+      <Button fx:id="borrowVinyl" layoutX="543.0" layoutY="47.0" mnemonicParsing="false" onAction="#borrow" prefHeight="26.0" prefWidth="115.0" text="Borrow" />
+      <Button fx:id="reserveVinyl" layoutX="543.0" layoutY="87.0" mnemonicParsing="false" onAction="#reserve" prefHeight="26.0" prefWidth="115.0" text="Reserve" />
+      <Button fx:id="removeVinyl" layoutX="543.0" layoutY="127.0" mnemonicParsing="false" onAction="#remove" prefHeight="26.0" prefWidth="115.0" text="Remove" />
+      <TableView fx:id="tableView" layoutY="46.0" prefHeight="334.0" prefWidth="520.0">
+        <columns>
+          <TableColumn fx:id="title" prefWidth="137.89092636108398" text="Title" />
+          <TableColumn fx:id="year" prefWidth="94.2545166015625" text="Release year" />
+            <TableColumn fx:id="artist" prefWidth="113.45452880859375" text="Artist" />
+            <TableColumn fx:id="state" prefWidth="176.29091380221848" text="State" />
+        </columns>
+      </TableView>
+      <Button fx:id="returnVinyl" layoutX="543.0" layoutY="169.0" mnemonicParsing="false" onAction="#returnVinyl" prefHeight="26.0" prefWidth="115.0" text="Return" />
+      <Label layoutX="216.0" prefHeight="47.0" prefWidth="168.0" text="Vinyl library" textAlignment="CENTER">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
