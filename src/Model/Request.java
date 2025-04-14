@@ -1,14 +1,21 @@
 package Model;
-public class Request
+
+import java.io.Serializable;
+
+public class Request implements Serializable
 {
   private Vinyl vinyl;
   private String action;
+  private int userID;
+  private static final long serialVersionUID = 1L;
 
-  public Request(Vinyl vinyl, String action)
+  public Request(Vinyl vinyl, String action, int userID)
   {
     {
       this.vinyl = vinyl;
       this.action = action;
+      this.userID = userID;
+
     }
 
   }
@@ -17,8 +24,8 @@ public class Request
     return this.vinyl;
   }
 
-  public String getAction()
-  {
-    return action;
-  }
+  public String getAction() {return this.action;}
+
+  public int getUserID() {return this.userID;}
+
 }

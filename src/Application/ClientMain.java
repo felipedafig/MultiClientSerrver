@@ -2,8 +2,6 @@ package Application;
 
 import Model.ClientConnection;
 import Model.ClientModelManager;
-import Model.DataModel;
-import Model.User;
 import View.ViewController;
 import ViewModel.ViewModel;
 import javafx.application.Application;
@@ -11,7 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Main extends Application
+public class ClientMain extends Application
 {
   public static void main(String[] args)
   {
@@ -20,8 +18,12 @@ public class Main extends Application
 
   @Override public void start(Stage primaryStage) throws Exception
   {
-    ClientConnection client = new ClientConnection("localhost", 2137);
-    ClientModelManager model = new ClientModelManager(client);
+
+
+    ClientModelManager model = new ClientModelManager();
+    ClientConnection client = new ClientConnection("localhost", 1234, model);
+    model.setClientConnection(client);
+
     ViewModel viewModel = new ViewModel(model);
 
     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/VinylList.fxml"));
@@ -31,5 +33,8 @@ public class Main extends Application
     primaryStage.setTitle("Vinyl Library");
     primaryStage.setScene(scene);
     primaryStage.show();
+
+    Thread thread = new Thread(client);
+    thread.start();
   }
 }

@@ -1,8 +1,10 @@
 package Model;
 
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.Date;
 
-public class Vinyl
+public class Vinyl implements Serializable
 {
 
   private String title;
@@ -10,6 +12,7 @@ public class Vinyl
   private int releaseYear;
   private boolean isForRemoval;
   private VinylState currentState;
+  private static final long serialVersionUID = 1L;
 
 
 
@@ -24,53 +27,63 @@ public class Vinyl
 
   }
 
-    public boolean onReturn(int userID)
-    {
-      return currentState.onReturn(this, userID);
-    }
+  public boolean onReturn(int userID)
+  {
+    return currentState.onReturn(this, userID);
+  }
 
-    public boolean onReserve(int userID)
-    {
-      return currentState.onReserve(this, userID);
-    }
+  public boolean onReserve(int userID)
+  {
+    return currentState.onReserve(this, userID);
+  }
 
-    public boolean onBorrow(int userID)
-    {
-      return currentState.onBorrow(this, userID);
-    }
+  public boolean onBorrow(int userID)
+  {
+    return currentState.onBorrow(this, userID);
+  }
 
-    public void flagForRemoval () {
+  public void flagForRemoval () {
     isForRemoval = true;
   }
 
-    public boolean getFlagged()
-    {
-      return isForRemoval;
-    }
+  public boolean getFlagged()
+  {
+    return isForRemoval;
+  }
 
-    public String getState () {
+  public String getState () {
     return currentState.getState();
   }
-    public String getStateDescription () {
+  public String getStateDescription () {
     return currentState.getStateDescription();
-    }
+  }
 
-    void setState (VinylState newState){
+  void setState (VinylState newState){
     this.currentState = newState;
   }
 
-    public String getTitle () {
+  public String getTitle () {
     return title;
   }
 
-    public String getArtist () {
+  public String getArtist () {
     return artist;
   }
 
-    public int getReleaseYear () {
+  public int getReleaseYear () {
     return releaseYear;
   }
 
+  private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
+    in.defaultReadObject();
+    if (currentState == null) {
+      System.out.println("Deserialization failed for Vinyl: " + title + "; currentState is null.");
+    } else {
+      System.out.println("Deserialized Vinyl: " + title + ", state: " + currentState.getState() +
+          ", state class: " + currentState.getClass().getName());
+    }
   }
+}
+
 
 

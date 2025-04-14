@@ -1,9 +1,12 @@
 package Model;
 
-public class BorrowedState implements VinylState
+import java.io.Serializable;
+
+public class BorrowedState implements VinylState, Serializable
 {
     private final static String STATE = "Borrowed";
     private int[] users;
+    private static final long serialVersionUID = 1L;
 
     public BorrowedState(int[] users)
     {
@@ -45,7 +48,7 @@ public class BorrowedState implements VinylState
 
     public String getStateDescription()
     {
-        return "Borrowed by: " + users[0];
+        return STATE;
     }
 }
 

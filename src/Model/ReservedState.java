@@ -1,6 +1,8 @@
 package Model;
 
-public class ReservedState implements VinylState
+import java.io.Serializable;
+
+public class ReservedState implements VinylState, Serializable
 {
     private final static String STATE = "Reserved";
     private int[] users;

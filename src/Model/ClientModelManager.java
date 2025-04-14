@@ -14,43 +14,85 @@ public class ClientModelManager implements Model, PropertyChangeSubject
   private List<Vinyl> vinyls;
   private ClientConnection client;
 
-  public ClientModelManager(ClientConnection client){
+  public ClientModelManager(){
+    this.support = new PropertyChangeSupport(this); // Initialize support
+    this.vinyls = new ArrayList<>(); // Initialize vinyls
+  }
+
+  public void setClientConnection(ClientConnection client) {
     this.client = client;
   }
 
   @Override public List<Vinyl> getAllVinyls()
   {
-    return List.of();
+    return vinyls;
   }
 
-  @Override public void addVinyl(Vinyl vinyl)
+  @Override public void addVinyl(Vinyl vinyl, int userID)
   {
-//    client.sendRequest(new Request(vinyl, "add"));
-//    support.firePropertyChange("VinylUpdated", null, vinyls);
-  }
-
-  @Override public void removeVinyl(Vinyl vinyl)
-  {
-    client.sendRequest(new Request(vinyl , "remove"));
+    client.sendRequest(new Request(vinyl, "add", userID));
     support.firePropertyChange("VinylUpdated", null, vinyls);
   }
 
-  @Override public void reserveVinyl(Vinyl vinyl)
+  @Override public void removeVinyl(Vinyl vinyl, int userID)
   {
-    client.sendRequest(new Request(vinyl, "reserve"));
+    client.sendRequest(new Request(vinyl, "remove", userID));
     support.firePropertyChange("VinylUpdated", null, vinyls);
   }
 
-  @Override public void returnVinyl(Vinyl vinyl)
+  @Override public void reserveVinyl(Vinyl vinyl, int userID)
   {
-    client.sendRequest(new Request(vinyl, "return"));
+    client.sendRequest(new Request(vinyl, "reserve", userID));
     support.firePropertyChange("VinylUpdated", null, vinyls);
   }
 
-  @Override public void borrowVinyl(Vinyl vinyl)
+  @Override public void returnVinyl(Vinyl vinyl, int userID)
   {
-    client.sendRequest(new Request(vinyl, "borrow"));
+    client.sendRequest(new Request(vinyl, "return", userID));
     support.firePropertyChange("VinylUpdated", null, vinyls);
+  }
+
+  @Override public void borrowVinyl(Vinyl vinyl, int userID)
+  {
+    client.sendRequest(new Request(vinyl, "borrow", userID));
+    support.firePropertyChange("VinylUpdated", null, vinyls);
+  }
+
+  public void handleServerResponse(Response response) {
+    if (response == null || response.getVinyls() == null) {
+      System.out.println("Received null response or vinyls list");
+      return;
+    }
+
+    List<Vinyl> oldVinyls = new ArrayList<>(vinyls); // Keep a copy of the old list
+    // Update the local vinyls list by matching Vinyl objects based on title
+    List<Vinyl> newVinyls = response.getVinyls();
+    for (Vinyl newVinyl : newVinyls) {
+      boolean found = false;
+      for (int i = 0; i < vinyls.size(); i++) {
+        Vinyl existingVinyl = vinyls.get(i);
+        if (existingVinyl.getTitle().equals(newVinyl.getTitle())) {
+          vinyls.set(i, newVinyl); // Update the existing Vinyl with the new one
+
+          found = true;
+          break;
+        }
+      }
+      if (!found) {
+        vinyls.add(newVinyl); // Add new Vinyl if it doesn't exist
+      }
+    }
+
+    // Remove Vinyls that are no longer in the server's list
+    vinyls.removeIf(v -> newVinyls.stream().noneMatch(nv -> nv.getTitle().equals(v.getTitle())));
+
+    System.out.println("Updated vinyls list:");
+    for (Vinyl v : vinyls) {
+      System.out.println("Vinyl: " + v.getTitle() + ", state: " + v.getState());
+    }
+
+    support.firePropertyChange("VinylUpdated", oldVinyls, vinyls);
+    System.out.println("handleresponse");
   }
 
   @Override
@@ -73,27 +115,5 @@ public class ClientModelManager implements Model, PropertyChangeSubject
 
   public void removePropertyChangeListener(String name, PropertyChangeListener listener) {
     support.removePropertyChangeListener(name, listener);
-  }
-
-  public void updateServerWithVinyl(Vinyl vinyl, String action) {
-    try {
-      if (!action.equals("borrow") && !action.equals("return") && !action.equals("reserve")) {
-        throw new IllegalArgumentException("Invalid action: " + action);
-      }
-
-      Request request = new Request(vinyl, action);
-      client.sendRequest(request);
-      System.out.println("Request sent to server: " + request.getAction());
-    } catch (Exception e) {
-      System.err.println("Failed to send request: " + e.getMessage());
-      support.firePropertyChange("error", null, "Failed to send request: " + e.getMessage());
-    }
-  }
-
-  public void handleServerResponse(Response response) {
-    List<Vinyl> oldVinyls = new ArrayList<>(vinyls);
-    vinyls = new ArrayList<>(response.getVinyls());
-    support.firePropertyChange("vinyls", oldVinyls, vinyls);
-    support.firePropertyChange("message", null, response.getMessage());
   }
 }
