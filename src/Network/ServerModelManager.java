@@ -1,16 +1,23 @@
 package Network;
 
 import Model.Request;
+import Network.Response;
 import Model.Vinyl;
+import Network.ActionStrategy;
+import Network.BorrowVinylStrategy;
+import Network.ReturnVinylStrategy;
+import Network.ReserveVinylStrategy;
+import Network.RemoveVinylStrategy;
+import Network.AddVinylStrategy;
 
 import java.util.List;
 import java.util.ArrayList;
 
 public class ServerModelManager {
   private List<Vinyl> vinyls;
+  private ActionStrategy strategy; // The current strategy
 
   public ServerModelManager() {
-
     this.vinyls = new ArrayList<>();
     vinyls.add(new Vinyl("The Dark Side of the Moon", "Pink Floyd", 1973));
     vinyls.add(new Vinyl("Abbey Road", "The Beatles", 1969));
@@ -20,92 +27,41 @@ public class ServerModelManager {
     vinyls.add(new Vinyl("Revolver", "The Beatles", 1966));
     vinyls.add(new Vinyl("The White Album", "The Beatles", 1968));
     vinyls.add(new Vinyl("Physical Graffiti", "Led Zeppelin", 1975));
+
+  }
+
+  public void setStrategy(ActionStrategy strategy) {
+    this.strategy = strategy;
+  }
+
+  public ActionStrategy getStrategy() {
+    return this.strategy;
   }
 
   public Response processRequest(Request request) {
     String action = request.getAction().toLowerCase();
-    Vinyl vinyl = request.getVinyl();
-    Response response = new Response();
-    String message = "Request processed successfully";
-    int userID = request.getUserID(); // Get userID from the request
+
 
     if (action.equals("borrow")) {
-      for (int i = 0; i < vinyls.size(); i++) {
-        Vinyl currentVinyl = vinyls.get(i);
-        if (currentVinyl.getTitle().equals(vinyl.getTitle())) {
-          boolean success = currentVinyl.onBorrow(userID);
-          System.out.println(currentVinyl.getTitle()+ " borrowedd");
-
-          if (!success) {
-            message = "Vinyl cannot be borrowed";
-          }
-          break;
-        }
-      }
+      setStrategy(new BorrowVinylStrategy());
     } else if (action.equals("return")) {
-      for (int i = 0; i < vinyls.size(); i++) {
-        Vinyl currentVinyl = vinyls.get(i);
-        if (currentVinyl.getTitle().equals(vinyl.getTitle())) {
-          boolean success = currentVinyl.onReturn(userID);
-          if (!success) {
-            message = "Vinyl cannot be returned";
-          }
-          break;
-        }
-      }
+      setStrategy(new ReturnVinylStrategy());
     } else if (action.equals("reserve")) {
-      for (int i = 0; i < vinyls.size(); i++) {
-        Vinyl currentVinyl = vinyls.get(i);
-        if (currentVinyl.getTitle().equals(vinyl.getTitle())) {
-          boolean success = currentVinyl.onReserve(userID);
-          if (!success) {
-            message = "Vinyl cannot be reserved";
-          }
-          break;
-        }
-      }
+      setStrategy(new ReserveVinylStrategy());
     } else if (action.equals("remove")) {
-      for (int i = 0; i < vinyls.size(); i++) {
-        Vinyl currentVinyl = vinyls.get(i);
-        if (currentVinyl.getTitle().equals(vinyl.getTitle())) {
-          if (!currentVinyl.getFlagged()) {
-            currentVinyl.flagForRemoval();
-            message = "Vinyl flagged for removal";
-          } else {
-            vinyls.remove(i);
-            message = "Vinyl removed successfully";
-          }
-          break;
-        }
-      }
+      setStrategy(new RemoveVinylStrategy());
     } else if (action.equals("add")) {
-      boolean vinylExists = false;
-      for (int i = 0; i < vinyls.size(); i++) {
-        Vinyl currentVinyl = vinyls.get(i);
-        if (currentVinyl.getTitle().equals(vinyl.getTitle())) {
-          vinyls.set(i, vinyl);
-          vinylExists = true;
-          break;
-        }
-      }
-      if (!vinylExists) {
-        vinyls.add(vinyl);
-      }
-    } else {
-      System.out.println("Unknown action: " + action);
-      message = "Unknown action: " + action;
+      setStrategy(new AddVinylStrategy());
     }
 
-    broadcast(vinyls);
-
-    response.setVinyls(vinyls);
-    response.setMessage(message);
+    //execute the current strategy
+    Response response = getStrategy().execute(request, vinyls);
+    broadcast(vinyls); 
 
     return response;
   }
 
-  public List<Vinyl> getVinyls()
-  {
+  public List<Vinyl> getVinyls() {
     return vinyls;
   }
 

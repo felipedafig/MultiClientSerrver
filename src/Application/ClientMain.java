@@ -19,7 +19,6 @@ public class ClientMain extends Application
   @Override public void start(Stage primaryStage) throws Exception
   {
 
-
     ClientModelManager model = new ClientModelManager();
     ClientConnection client = new ClientConnection("localhost", 1234, model);
     model.setClientConnection(client);

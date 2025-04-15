@@ -8,7 +8,7 @@ import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClientModelManager implements Model, PropertyChangeSubject
+public class ClientModelManager implements PropertyChangeSubject
 {
   private PropertyChangeSupport support;
   private List<Vinyl> vinyls;
@@ -23,36 +23,36 @@ public class ClientModelManager implements Model, PropertyChangeSubject
     this.client = client;
   }
 
-  @Override public List<Vinyl> getAllVinyls()
+ public List<Vinyl> getAllVinyls()
   {
     return vinyls;
   }
 
-  @Override public void addVinyl(Vinyl vinyl, int userID)
+  public void addVinyl(Vinyl vinyl, int userID)
   {
     client.sendRequest(new Request(vinyl, "add", userID));
     support.firePropertyChange("VinylUpdated", null, vinyls);
   }
 
-  @Override public void removeVinyl(Vinyl vinyl, int userID)
+  public void removeVinyl(Vinyl vinyl, int userID)
   {
     client.sendRequest(new Request(vinyl, "remove", userID));
     support.firePropertyChange("VinylUpdated", null, vinyls);
   }
 
-  @Override public void reserveVinyl(Vinyl vinyl, int userID)
+  public void reserveVinyl(Vinyl vinyl, int userID)
   {
     client.sendRequest(new Request(vinyl, "reserve", userID));
     support.firePropertyChange("VinylUpdated", null, vinyls);
   }
 
-  @Override public void returnVinyl(Vinyl vinyl, int userID)
+  public void returnVinyl(Vinyl vinyl, int userID)
   {
     client.sendRequest(new Request(vinyl, "return", userID));
     support.firePropertyChange("VinylUpdated", null, vinyls);
   }
 
-  @Override public void borrowVinyl(Vinyl vinyl, int userID)
+  public void borrowVinyl(Vinyl vinyl, int userID)
   {
     client.sendRequest(new Request(vinyl, "borrow", userID));
     support.firePropertyChange("VinylUpdated", null, vinyls);
