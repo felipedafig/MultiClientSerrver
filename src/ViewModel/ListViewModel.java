@@ -8,12 +8,12 @@ import javafx.collections.ObservableList;
 import java.beans.PropertyChangeEvent;
 import java.util.List;
 
-public class ViewModel
+public class ListViewModel
 {
   private ClientModelManager model;
   private ObservableList<Vinyl> vinyls;
 
-  public ViewModel(ClientModelManager model) {
+  public ListViewModel(ClientModelManager model) {
     this.model = model;
     this.vinyls = FXCollections.observableArrayList();
     refresh();

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="420.0" prefWidth="681.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.ViewController">
+<AnchorPane prefHeight="420.0" prefWidth="681.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.ListViewController">
    <children>
       <Button fx:id="borrowVinyl" layoutX="543.0" layoutY="47.0" mnemonicParsing="false" onAction="#borrow" prefHeight="26.0" prefWidth="115.0" text="Borrow" />
       <Button fx:id="reserveVinyl" layoutX="543.0" layoutY="87.0" mnemonicParsing="false" onAction="#reserve" prefHeight="26.0" prefWidth="115.0" text="Reserve" />
@@ -26,5 +26,6 @@
             <Font size="32.0" />
          </font>
       </Label>
+      <Button fx:id="addVinyl" layoutX="543.0" layoutY="210.0" mnemonicParsing="false" onAction="#addVinyl" prefHeight="26.0" prefWidth="115.0" text="Add" />
    </children>
 </AnchorPane>

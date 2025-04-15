@@ -2,12 +2,17 @@ package Application;
 
 import Model.ClientConnection;
 import Model.ClientModelManager;
-import View.ViewController;
-import ViewModel.ViewModel;
+import View.ListViewController;
+import View.ViewHandler;
+import ViewModel.ListViewModel;
+import ViewModel.ViewModelFactory;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.scene.image.Image;
+
+import java.util.Objects;
 
 public class ClientMain extends Application
 {
@@ -23,15 +28,13 @@ public class ClientMain extends Application
     ClientConnection client = new ClientConnection("localhost", 1234, model);
     model.setClientConnection(client);
 
-    ViewModel viewModel = new ViewModel(model);
+    ListViewModel listViewModel = new ListViewModel(model);
 
-    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/VinylList.fxml"));
-    fxmlLoader.setControllerFactory(controllerClass -> new ViewController(viewModel));
+    ViewModelFactory viewModelFactory = new ViewModelFactory(model);
+    ViewHandler viewHandler = new ViewHandler(viewModelFactory);
 
-    Scene scene = new Scene(fxmlLoader.load(), 700, 380);
-    primaryStage.setTitle("Vinyl Library");
-    primaryStage.setScene(scene);
-    primaryStage.show();
+
+      viewHandler.start();
 
     Thread thread = new Thread(client);
     thread.start();
