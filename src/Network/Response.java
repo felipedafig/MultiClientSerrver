@@ -9,7 +9,6 @@ import java.util.List;
 public class Response implements Serializable {
   private List<Vinyl> vinyls;
   private String message;
-  private static final long serialVersionUID = 1L;
 
   public Response() {
     this.vinyls = new ArrayList<>();
