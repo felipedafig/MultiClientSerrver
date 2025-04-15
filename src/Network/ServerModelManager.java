@@ -56,7 +56,7 @@ public class ServerModelManager {
 
     //execute the current strategy
     Response response = getStrategy().execute(request, vinyls);
-    broadcast(vinyls); 
+    broadcast(vinyls);
 
     return response;
   }

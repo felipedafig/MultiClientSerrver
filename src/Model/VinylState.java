@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 public interface VinylState extends Serializable
 {
-    long serialVersionUID = 1L;
     boolean onBorrow (Vinyl vinyl, int userID);
     boolean onReturn (Vinyl vinyl, int userID);
     boolean onReserve(Vinyl vinyl, int userID);

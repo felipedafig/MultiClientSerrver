@@ -18,11 +18,10 @@ public class ReservedState implements VinylState, Serializable
     }
     @Override
     public boolean onBorrow(Vinyl vinyl, int userID) {
-        if(userID == users[0]) {
+ // need to add logic for checking if the same user this happens:
             vinyl.setState(new BorrowedState(new int[]{users[0]}));
             return true;
-        }
-        return false;
+            //if not the user, its borrowed and reserved state, need to add!!!
     }
 
     @Override

@@ -4,11 +4,10 @@ import java.io.Serializable;
 
 public class BorrowedAndReservedState implements VinylState, Serializable
 {
-    private final static String STATE = "Borrowed and reserved";
+    private final static String STATE = "Borrowed and Reserved";
 
     // The array should always be of size 2 - on index 0 is the borrower and on index 1 is the reserver
     private int[] users;
-    private static final long serialVersionUID = 1L;
 
     public BorrowedAndReservedState(int[] users)
     {

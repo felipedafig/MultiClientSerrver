@@ -6,7 +6,6 @@ public class AvailableState implements VinylState, Serializable
 {
     private final static String STATE = "Available";
     private int[] users;
-    private static final long serialVersionUID = 1L;
 
     @Override
     public String getState() {

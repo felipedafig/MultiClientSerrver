@@ -15,12 +15,17 @@ public class RemoveVinylStrategy implements ActionStrategy {
     for (int i = 0; i < vinyls.size(); i++) {
       Vinyl currentVinyl = vinyls.get(i);
       if (currentVinyl.getTitle().equals(requestedVinyl.getTitle())) {
-        if (!currentVinyl.getFlagged()) {
-          currentVinyl.flagForRemoval();
-          message = "Vinyl flagged for removal";
-        } else {
+        if (currentVinyl.getState().equals("Available")) {
           vinyls.remove(i);
           message = "Vinyl removed successfully";
+        } else {
+          if (!currentVinyl.getFlagged()) {
+            currentVinyl.flagForRemoval();
+            message = "Vinyl flagged for removal";
+          } else {
+            vinyls.remove(i);
+            message = "Vinyl removed successfully";
+          }
         }
         break;
       }

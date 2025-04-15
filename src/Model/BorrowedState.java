@@ -6,7 +6,6 @@ public class BorrowedState implements VinylState, Serializable
 {
     private final static String STATE = "Borrowed";
     private int[] users;
-    private static final long serialVersionUID = 1L;
 
     public BorrowedState(int[] users)
     {
@@ -33,12 +32,9 @@ public class BorrowedState implements VinylState, Serializable
 
     @Override
     public boolean onReserve(Vinyl vinyl, int userID) {
-        if(userID != users[0])
-        {
+
             vinyl.setState(new BorrowedAndReservedState(new int[] {users[0], userID}));
             return true;
-        }
-        return false;
     }
 
     @Override

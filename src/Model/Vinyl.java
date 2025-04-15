@@ -12,8 +12,6 @@ public class Vinyl implements Serializable
   private int releaseYear;
   private boolean isForRemoval;
   private VinylState currentState;
-  private static final long serialVersionUID = 1L;
-
 
 
   public Vinyl(String title, String artist, int releaseYear)
@@ -54,6 +52,7 @@ public class Vinyl implements Serializable
   public String getState () {
     return currentState.getState();
   }
+
   public String getStateDescription () {
     return currentState.getStateDescription();
   }
@@ -74,15 +73,6 @@ public class Vinyl implements Serializable
     return releaseYear;
   }
 
-  private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
-    in.defaultReadObject();
-    if (currentState == null) {
-      System.out.println("Deserialization failed for Vinyl: " + title + "; currentState is null.");
-    } else {
-      System.out.println("Deserialized Vinyl: " + title + ", state: " + currentState.getState() +
-          ", state class: " + currentState.getClass().getName());
-    }
-  }
 }
 
 
