@@ -1,0 +1,28 @@
+[2025-04-17 13:50:04.566] [127.0.0.1] Client connected.
+[2025-04-17 13:50:04.594] [127.0.0.1] Sending response: Message='Initial list loaded.', VinylCount=8
+[2025-04-17 13:50:11.371] [127.0.0.1] Received request: Action=borrow, Vinyl=The Dark Side of the Moon, UserID=69
+[2025-04-17 13:50:11.386] [127.0.0.1] Sending response: Message='Request processed successfully', VinylCount=8
+[2025-04-17 15:27:58.906] [127.0.0.1:9412] Client connected.
+[2025-04-17 15:27:58.938] [127.0.0.1:9412] Sending response: Message='Initial list loaded.', VinylCount=8
+[2025-04-17 15:28:03.073] [127.0.0.1:9412] Received request: Action=borrow, Vinyl=The Dark Side of the Moon, ClientIdentifier=127.0.0.1:9412
+[2025-04-17 15:28:03.085] [127.0.0.1:9412] Closed connection socket.
+[2025-04-17 15:29:08.412] [127.0.0.1:9425] Client connected.
+[2025-04-17 15:29:08.437] [127.0.0.1:9425] Sending response: Message='Initial list loaded.', VinylCount=8
+[2025-04-17 15:29:11.089] [127.0.0.1:9425] Received request: Action=borrow, Vinyl=The Dark Side of the Moon, ClientIdentifier=127.0.0.1:9425
+[2025-04-17 15:29:11.091] [127.0.0.1:9425] Closed connection socket.
+[2025-04-17 15:31:33.375] [127.0.0.1] Client connected.
+[2025-04-17 15:31:33.402] [127.0.0.1] Sending response: Message='Initial list loaded.', VinylCount=8
+[2025-04-17 15:31:36.018] [127.0.0.1] Received request: Action=borrow, Vinyl=The Dark Side of the Moon, UserID=69
+[2025-04-17 15:31:36.023] [127.0.0.1] Sending response: Message='Request processed successfully', VinylCount=8
+[2025-04-17 15:31:38.443] [127.0.0.1] Received request: Action=reserve, Vinyl=The Dark Side of the Moon, UserID=69
+[2025-04-17 15:31:38.458] [127.0.0.1] Sending response: Message='Request processed successfully', VinylCount=8
+[2025-04-17 15:31:40.506] [127.0.0.1] Received request: Action=borrow, Vinyl=Abbey Road, UserID=69
+[2025-04-17 15:31:40.506] [127.0.0.1] Sending response: Message='Request processed successfully', VinylCount=8
+[2025-04-17 15:32:29.306] [127.0.0.1] Socket exception (client likely disconnected forcibly): Connection reset
+[2025-04-17 15:32:29.309] [127.0.0.1] Closed connection socket.
+[2025-04-17 15:35:19.343] [127.0.0.1] Client connected.
+[2025-04-17 15:35:19.369] [127.0.0.1] Sending response: Message='Initial list loaded.', VinylCount=8
+[2025-04-17 15:35:22.451] [127.0.0.1] Received request: Action=borrow, Vinyl=The Dark Side of the Moon
+[2025-04-17 15:35:22.454] [127.0.0.1] Sending response: Message='Request processed successfully', VinylCount=8
+[2025-04-17 15:35:58.953] [127.0.0.1] Socket exception (client likely disconnected forcibly): Connection reset
+[2025-04-17 15:35:58.954] [127.0.0.1] Closed connection socket.

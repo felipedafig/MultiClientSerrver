@@ -19,7 +19,7 @@ public class ClientMain extends Application
   {
 
     ClientModelManager model = new ClientModelManager();
-    ClientConnection client = new ClientConnection("localhost", 1234, model);
+    ClientConnection client = new ClientConnection("localhost", 1235, model);
     model.setClientConnection(client);
 
     ViewModelFactory viewModelFactory = new ViewModelFactory(model);

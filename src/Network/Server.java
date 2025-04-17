@@ -5,7 +5,7 @@ import java.net.Socket;
 
 public class Server {
   public static void main(String[] args) throws Exception {
-    ServerSocket serverSocket = new ServerSocket(1234);
+    ServerSocket serverSocket = new ServerSocket(1235);
     ServerModelManager modelManager = new ServerModelManager();
     System.out.println("Server started on port 1234");
     while (true) {

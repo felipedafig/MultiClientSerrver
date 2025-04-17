@@ -37,7 +37,7 @@ public class ServerConnection implements Runnable {
       while (true) {
         Request request = (Request) inFromClient.readObject();
 
-        String requestLog = String.format("Received request: Action=%s, Vinyl=%s, UserID=%d", request.getAction(), request.getVinyl().getTitle(), request.getUserID());
+        String requestLog = String.format("Received request: Action=%s, Vinyl=%s", request.getAction(), request.getVinyl().getTitle());
         logger.log(clientIpAddress, requestLog);
 
         Response response = model.processRequest(request);

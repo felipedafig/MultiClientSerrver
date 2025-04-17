@@ -7,7 +7,6 @@ public class Request implements Serializable
   private Vinyl vinyl;
   private String action;
   private int userID;
-  private static final long serialVersionUID = 1L;
 
   public Request(Vinyl vinyl, String action, int userID)
   {
