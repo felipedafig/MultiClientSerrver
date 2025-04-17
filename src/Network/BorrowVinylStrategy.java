@@ -1,7 +1,6 @@
 package Network;
 
 import Model.Request;
-import Network.Response;
 import Model.Vinyl;
 import java.util.List;
 
@@ -23,7 +22,7 @@ public class BorrowVinylStrategy implements ActionStrategy {
         break;
       }
     }
-    response.setVinyls(vinyls); //update the vinyls in the response
+    response.setVinyls(vinyls);
     response.setMessage(message);
     return response;
   }

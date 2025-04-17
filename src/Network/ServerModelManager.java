@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class ServerModelManager {
   private List<Vinyl> vinyls;
-  private ActionStrategy strategy; // The current strategy
+  private ActionStrategy strategy;
 
   public ServerModelManager() {
     this.vinyls = new ArrayList<>();
@@ -54,7 +54,6 @@ public class ServerModelManager {
       setStrategy(new AddVinylStrategy());
     }
 
-    //execute the current strategy
     Response response = getStrategy().execute(request, vinyls);
     broadcast(vinyls);
 

@@ -1,8 +1,6 @@
 package Model;
 
-import java.io.IOException;
 import java.io.Serializable;
-import java.util.Date;
 
 public class Vinyl implements Serializable
 {

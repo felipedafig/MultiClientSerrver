@@ -17,9 +17,9 @@ public class ClientConnection implements Runnable {
     try {
       this.socket = new Socket(host, port);
 
-      this.inFromServer = new ObjectInputStream(socket.getInputStream());
       this.outToServer = new ObjectOutputStream(socket.getOutputStream());
       this.outToServer.flush();
+      this.inFromServer = new ObjectInputStream(socket.getInputStream());
       this.clientModelManager = clientModelManager;
     } catch (IOException e) {
       e.printStackTrace();
@@ -32,14 +32,11 @@ public class ClientConnection implements Runnable {
 
       while (true) {
         Response response = (Response) inFromServer.readObject();
-        for (Vinyl v : response.getVinyls()) {
-          System.out.println("Vinyl: " + v.getTitle() + ", state: " + v.getState());
-        }
 
         clientModelManager.handleServerResponse(response);
         System.out.println("clientconnection");
 
-        System.out.println(response.getVinyls().getFirst().getState());
+        System.out.println("Client handled server response.");
       }
     } catch (IOException | ClassNotFoundException e) {
       throw new RuntimeException(e);

@@ -15,8 +15,8 @@ public class ClientModelManager implements PropertyChangeSubject
   private ClientConnection client;
 
   public ClientModelManager(){
-    this.support = new PropertyChangeSupport(this); // Initialize support
-    this.vinyls = new ArrayList<>(); // Initialize vinyls
+    this.support = new PropertyChangeSupport(this);
+    this.vinyls = new ArrayList<>();
   }
 
   public void setClientConnection(ClientConnection client) {
@@ -64,26 +64,24 @@ public class ClientModelManager implements PropertyChangeSubject
       return;
     }
 
-    List<Vinyl> oldVinyls = new ArrayList<>(vinyls); // Keep a copy of the old list
-    // Update the local vinyls list by matching Vinyl objects based on title
+    List<Vinyl> oldVinyls = new ArrayList<>(vinyls);
     List<Vinyl> newVinyls = response.getVinyls();
     for (Vinyl newVinyl : newVinyls) {
       boolean found = false;
       for (int i = 0; i < vinyls.size(); i++) {
         Vinyl existingVinyl = vinyls.get(i);
         if (existingVinyl.getTitle().equals(newVinyl.getTitle())) {
-          vinyls.set(i, newVinyl); // Update the existing Vinyl with the new one
+          vinyls.set(i, newVinyl);
 
           found = true;
           break;
         }
       }
       if (!found) {
-        vinyls.add(newVinyl); // Add new Vinyl if it doesn't exist
+        vinyls.add(newVinyl);
       }
     }
 
-    // Remove Vinyls that are no longer in the server's list
     vinyls.removeIf(v -> newVinyls.stream().noneMatch(nv -> nv.getTitle().equals(v.getTitle())));
 
     System.out.println("Updated vinyls list:");

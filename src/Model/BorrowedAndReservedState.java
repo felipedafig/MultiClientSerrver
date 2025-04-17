@@ -6,7 +6,6 @@ public class BorrowedAndReservedState implements VinylState, Serializable
 {
     private final static String STATE = "Borrowed and Reserved";
 
-    // The array should always be of size 2 - on index 0 is the borrower and on index 1 is the reserver
     private int[] users;
 
     public BorrowedAndReservedState(int[] users)
