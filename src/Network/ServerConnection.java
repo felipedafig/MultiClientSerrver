@@ -18,9 +18,7 @@ public class ServerConnection implements Runnable {
     this.socket = socket;
     this.model = model;
     this.clientIpAddress = socket.getInetAddress().getHostAddress();
-
     logger.log(clientIpAddress, "Client connected.");
-
     this.outToClient = new ObjectOutputStream(socket.getOutputStream());
     this.outToClient.flush();
     this.inFromClient = new ObjectInputStream(socket.getInputStream());

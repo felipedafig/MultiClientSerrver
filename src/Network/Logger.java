@@ -63,11 +63,4 @@ public class Logger
       fileWriter = null;
     }
   }
-  public synchronized void close() {
-    if (fileWriter != null) {
-      System.out.println("Closing log file: " + LOG_FILE_NAME);
-      fileWriter.close();
-      fileWriter = null;
-    }
-  }
 }
