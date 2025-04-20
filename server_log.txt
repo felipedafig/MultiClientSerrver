@@ -26,3 +26,45 @@
 [2025-04-17 15:35:22.454] [127.0.0.1] Sending response: Message='Request processed successfully', VinylCount=8
 [2025-04-17 15:35:58.953] [127.0.0.1] Socket exception (client likely disconnected forcibly): Connection reset
 [2025-04-17 15:35:58.954] [127.0.0.1] Closed connection socket.
+[2025-04-19 17:56:06.755] [127.0.0.1] Client connected.
+[2025-04-19 17:56:06.804] [127.0.0.1] Sending response: Message='Initial list loaded.', VinylCount=8
+[2025-04-19 17:59:44.198] [127.0.0.1] Socket exception (client likely disconnected forcibly): Connection reset
+[2025-04-19 17:59:44.200] [127.0.0.1] Closed connection socket.
+[2025-04-19 17:59:45.041] [127.0.0.1] Client connected.
+[2025-04-19 17:59:45.043] [127.0.0.1] Sending response: Message='Initial list loaded.', VinylCount=8
+[2025-04-19 18:10:00.309] [127.0.0.1] Client connected.
+[2025-04-19 18:10:00.312] [127.0.0.1] Sending response: Message='Initial list loaded.', VinylCount=8
+[2025-04-19 18:10:03.957] [127.0.0.1] Client connected.
+[2025-04-19 18:10:03.960] [127.0.0.1] Sending response: Message='Initial list loaded.', VinylCount=8
+[2025-04-19 18:10:13.461] [127.0.0.1] Received request: Action=borrow, Vinyl=The Dark Side of the Moon
+[2025-04-19 18:10:13.488] [127.0.0.1] Sending response: Message='Request processed successfully', VinylCount=8
+[2025-04-19 18:10:40.139] [127.0.0.1] Received request: Action=reserve, Vinyl=The Dark Side of the Moon
+[2025-04-19 18:10:40.168] [127.0.0.1] Sending response: Message='Request processed successfully', VinylCount=8
+[2025-04-19 18:10:49.754] [127.0.0.1] Received request: Action=borrow, Vinyl=The Dark Side of the Moon
+[2025-04-19 18:10:49.755] [127.0.0.1] Sending response: Message='Vinyl cannot be borrowed', VinylCount=8
+[2025-04-19 18:10:56.737] [127.0.0.1] Received request: Action=borrow, Vinyl=Abbey Road
+[2025-04-19 18:10:56.738] [127.0.0.1] Sending response: Message='Request processed successfully', VinylCount=8
+[2025-04-19 18:11:01.836] [127.0.0.1] Received request: Action=borrow, Vinyl=Abbey Road
+[2025-04-19 18:11:01.837] [127.0.0.1] Sending response: Message='Vinyl cannot be borrowed', VinylCount=8
+[2025-04-19 18:11:04.182] [127.0.0.1] Received request: Action=reserve, Vinyl=Abbey Road
+[2025-04-19 18:11:04.183] [127.0.0.1] Sending response: Message='Request processed successfully', VinylCount=8
+[2025-04-19 18:11:15.662] [127.0.0.1] Received request: Action=borrow, Vinyl=Led Zeppelin IV
+[2025-04-19 18:11:15.663] [127.0.0.1] Sending response: Message='Request processed successfully', VinylCount=8
+[2025-04-19 18:11:19.973] [127.0.0.1] Received request: Action=reserve, Vinyl=Led Zeppelin IV
+[2025-04-19 18:11:19.975] [127.0.0.1] Sending response: Message='Request processed successfully', VinylCount=8
+[2025-04-19 18:12:27.994] [127.0.0.1] Received request: Action=borrow, Vinyl=The Wall
+[2025-04-19 18:12:27.995] [127.0.0.1] Sending response: Message='Request processed successfully', VinylCount=8
+[2025-04-19 18:12:33.526] [127.0.0.1] Received request: Action=remove, Vinyl=The Wall
+[2025-04-19 18:12:33.544] [127.0.0.1] Sending response: Message='Vinyl flagged for removal', VinylCount=8
+[2025-04-19 18:13:59.673] [127.0.0.1] Received request: Action=borrow, Vinyl=Sgt. Pepper's Lonely Hearts Club Band
+[2025-04-19 18:13:59.674] [127.0.0.1] Sending response: Message='Request processed successfully', VinylCount=8
+[2025-04-19 18:14:08.381] [127.0.0.1] Received request: Action=borrow, Vinyl=Sgt. Pepper's Lonely Hearts Club Band
+[2025-04-19 18:14:08.382] [127.0.0.1] Sending response: Message='Vinyl cannot be borrowed', VinylCount=8
+[2025-04-19 18:14:10.040] [127.0.0.1] Received request: Action=reserve, Vinyl=Sgt. Pepper's Lonely Hearts Club Band
+[2025-04-19 18:14:10.042] [127.0.0.1] Sending response: Message='Request processed successfully', VinylCount=8
+[2025-04-19 18:14:13.435] [127.0.0.1] Received request: Action=reserve, Vinyl=Sgt. Pepper's Lonely Hearts Club Band
+[2025-04-19 18:14:13.436] [127.0.0.1] Sending response: Message='Vinyl cannot be reserved', VinylCount=8
+[2025-04-19 18:14:53.321] [127.0.0.1] Received request: Action=remove, Vinyl=Physical Graffiti
+[2025-04-19 18:14:53.322] [127.0.0.1] Sending response: Message='Vinyl removed successfully', VinylCount=7
+[2025-04-19 18:15:00.169] [127.0.0.1] Received request: Action=borrow, Vinyl=The White Album
+[2025-04-19 18:15:00.170] [127.0.0.1] Sending response: Message='Request processed successfully', VinylCount=7
