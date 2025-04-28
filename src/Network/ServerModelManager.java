@@ -16,8 +16,9 @@ import java.util.ArrayList;
 public class ServerModelManager {
   private List<Vinyl> vinyls;
   private ActionStrategy strategy;
+  private ConnectionPool connectionPool;
 
-  public ServerModelManager() {
+  public ServerModelManager(ConnectionPool connectionPool) {
     this.vinyls = new ArrayList<>();
     vinyls.add(new Vinyl("The Dark Side of the Moon", "Pink Floyd", 1973));
     vinyls.add(new Vinyl("Abbey Road", "The Beatles", 1969));
@@ -27,7 +28,7 @@ public class ServerModelManager {
     vinyls.add(new Vinyl("Revolver", "The Beatles", 1966));
     vinyls.add(new Vinyl("The White Album", "The Beatles", 1968));
     vinyls.add(new Vinyl("Physical Graffiti", "Led Zeppelin", 1975));
-
+    this.connectionPool = connectionPool;
   }
 
   public void setStrategy(ActionStrategy strategy) {
@@ -65,6 +66,7 @@ public class ServerModelManager {
   }
 
   private void broadcast(List<Vinyl> updatedVinyls) {
+    connectionPool.broadcast(updatedVinyls);
     System.out.println("Broadcasting updated vinyl list to all clients: " + updatedVinyls);
   }
 }

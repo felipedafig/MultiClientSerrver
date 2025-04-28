@@ -68,3 +68,27 @@
 [2025-04-19 18:14:53.322] [127.0.0.1] Sending response: Message='Vinyl removed successfully', VinylCount=7
 [2025-04-19 18:15:00.169] [127.0.0.1] Received request: Action=borrow, Vinyl=The White Album
 [2025-04-19 18:15:00.170] [127.0.0.1] Sending response: Message='Request processed successfully', VinylCount=7
+[2025-04-28 10:45:35.882] [127.0.0.1] Client connected.
+[2025-04-28 10:45:35.893] [127.0.0.1] Sending response: Message='Initial list loaded.', VinylCount=8
+[2025-04-28 10:45:42.330] [127.0.0.1] Received request: Action=reserve, Vinyl=Led Zeppelin IV
+[2025-04-28 10:45:42.331] [127.0.0.1] Sending response: Message='Request processed successfully', VinylCount=8
+[2025-04-28 10:45:44.228] [127.0.0.1] Received request: Action=borrow, Vinyl=Led Zeppelin IV
+[2025-04-28 10:45:44.230] [127.0.0.1] Sending response: Message='Request processed successfully', VinylCount=8
+[2025-04-28 11:16:01.278] [127.0.0.1] Client connected.
+[2025-04-28 11:16:01.284] [127.0.0.1] Sending response: Message='Initial list loaded.', VinylCount=8
+[2025-04-28 11:17:36.354] [127.0.0.1] Client connected.
+[2025-04-28 11:17:36.359] [127.0.0.1] Sending response: Message='Initial list loaded.', VinylCount=8
+[2025-04-28 11:17:43.129] [127.0.0.1] Client connected.
+[2025-04-28 11:17:43.131] [127.0.0.1] Sending response: Message='Initial list loaded.', VinylCount=8
+[2025-04-28 11:17:53.179] [127.0.0.1] Received request: Action=borrow, Vinyl=The Wall
+[2025-04-28 11:17:53.180] [127.0.0.1] Sending response: Message='The list has been altered by other users', VinylCount=8
+[2025-04-28 11:17:53.181] [127.0.0.1] Sending response: Message='The list has been altered by other users', VinylCount=8
+[2025-04-28 11:17:53.182] [127.0.0.1] Sending response: Message='Request processed successfully', VinylCount=8
+[2025-04-28 11:17:58.407] [127.0.0.1] Received request: Action=reserve, Vinyl=Revolver
+[2025-04-28 11:17:58.408] [127.0.0.1] Sending response: Message='The list has been altered by other users', VinylCount=8
+[2025-04-28 11:17:58.409] [127.0.0.1] Sending response: Message='The list has been altered by other users', VinylCount=8
+[2025-04-28 11:17:58.409] [127.0.0.1] Sending response: Message='Request processed successfully', VinylCount=8
+[2025-04-28 11:18:02.426] [127.0.0.1] Received request: Action=borrow, Vinyl=Revolver
+[2025-04-28 11:18:02.428] [127.0.0.1] Sending response: Message='The list has been altered by other users', VinylCount=8
+[2025-04-28 11:18:02.430] [127.0.0.1] Sending response: Message='The list has been altered by other users', VinylCount=8
+[2025-04-28 11:18:02.431] [127.0.0.1] Sending response: Message='Request processed successfully', VinylCount=8
